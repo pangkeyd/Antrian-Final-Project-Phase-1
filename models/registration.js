@@ -4,12 +4,11 @@ module.exports = function(sequelize, DataTypes) {
     customerID: DataTypes.INTEGER,
     clinicID: DataTypes.INTEGER,
     no_antrian: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+
+  Registration.associate = function(models){
+    Registration.belongsTo(models.Customer, {foreignKey: 'customerID'})
+  }
+
   return Registration;
 };
